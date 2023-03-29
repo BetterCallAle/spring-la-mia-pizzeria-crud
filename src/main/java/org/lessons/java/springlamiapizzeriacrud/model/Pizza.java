@@ -8,10 +8,15 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String description;
     private double price;
 
     //GETTERS
+    public String getName() {
+        return name;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -25,6 +30,10 @@ public class Pizza {
     }
 
     //SETTERS
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

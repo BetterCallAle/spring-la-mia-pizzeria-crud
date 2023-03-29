@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <div th:replace="~{pizzas/fragments :: resources('Home')}"></div>
+</head>
+<body>
+    <header th:insert="~{pizzas/fragments :: header('home')}"></header>
+    <div class="container py-4 text-center">
+        <h1 class="mb-4">Benvenuto</h1>
+        <a class="btn btn-primary" th:href="@{/pizzas}">Tutte le nostre pizze</a>
+    </div>
+</body>
+</html>
