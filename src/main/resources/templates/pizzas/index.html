@@ -8,10 +8,16 @@
     <div th:replace="~{pizzas/fragments :: resources('Tutte le nostre pizze')}"></div>
 </head>
 <body>
+    <header th:insert="~{pizzas/fragments :: header('pizzas')}"></header>
     <div class="container py-4">
+
         <h1>Tutte le nostre pizze</h1>
 
-        <table class="table">
+        <div th:if="${pizzas.size() == 0}">
+            <h2>Non sono state trovate pizze</h2>
+        </div>
+
+        <table class="table" th:unless="${pizzas.size() == 0}">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
