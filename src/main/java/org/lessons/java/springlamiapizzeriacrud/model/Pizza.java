@@ -2,6 +2,8 @@ package org.lessons.java.springlamiapizzeriacrud.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "pizzas")
 public class Pizza {
@@ -10,7 +12,7 @@ public class Pizza {
     private Integer id;
     private String name;
     private String description;
-    private double price;
+    private BigDecimal price;
 
     //GETTERS
     public String getName() {
@@ -25,7 +27,7 @@ public class Pizza {
         return description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -42,7 +44,7 @@ public class Pizza {
         this.description = description;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
