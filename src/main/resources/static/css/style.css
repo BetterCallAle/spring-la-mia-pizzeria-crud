@@ -13,6 +13,37 @@
     color: white;
 }
 
+.my-logo{
+    background-image: url('../background.png');
+}
+
+.my-logo-text{
+    font-size: 2rem;
+    color: white;
+    font-weight: 900;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    vertical-allign: middle;
+    transaction: all, 125ms, linear;
+}
+
+.my-logo-text:hover{
+    color: yellow;
+}
+
+.logo-img{
+    max-width: 100%;
+    height: 3rem;
+    vertical-allign: middle;
+}
+
+.my-navbar-item{
+    background-color: white;
+    padding: 3rem, 3rem !important;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: black;
+}
+
 .my-active{
     color:red;
 }
