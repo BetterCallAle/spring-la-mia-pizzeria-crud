@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,11 +25,16 @@ public class PizzaController {
 
     //INDEX
     @GetMapping
-    public String index(@RequestParam(name = "s") Optional<String> s, Model model){
+    public String index(@RequestParam(name = "s") Optional<String> s, @RequestParam(name = "p") Optional<BigDecimal> p, Model model){
         List<Pizza> pizzas;
 
         if(s.isEmpty()){
             pizzas =  pizzaRepo.findAll();
+            if(!p.isEmpty()){
+                pizzas = pizzaRepo.findByPriceLessThanEqual(p.get());
+            }
+        } else if (!p.isEmpty()) {
+            pizzas = pizzaRepo.findByNameContainingIgnoreCaseAndPriceLessThanEqual(s.get(), p.get());
         } else {
             pizzas = pizzaRepo.findByNameContainingIgnoreCase(s.get());
             model.addAttribute("search", s.get());
@@ -37,6 +43,12 @@ public class PizzaController {
         model.addAttribute("pizzas", pizzas);
 
         return "/pizzas/index";
+    }
+
+    //ADVANCED SEARCH
+    @GetMapping("/advanced-search")
+    public String advancedSearch(){
+        return "/pizzas/advanced-search";
     }
 
     //SHOW

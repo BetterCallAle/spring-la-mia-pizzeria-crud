@@ -11,6 +11,11 @@
     <div class="container text-center py-5">
         <h1 class="text-center">Error [[${status}]]</h1>
         <a th:href="@{/pizzas}" class="btn btn-danger">Torna alla pagina Home</a>
+
+    </div>
+    <div th:if="${exception}">
+        <p th:text="${exception}"></p>
+        <p th:text="${trace}"></p>
     </div>
 </body>
 </html>
