@@ -7,11 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <div th:replace="~{fragments/fragments :: resources('Home')}"></div>
 </head>
-<body>
-    <header th:insert="~{fragments/fragments :: header('home', '')}"></header>
-    <div class="container py-4 text-center">
-        <h1 class="mb-4">Benvenuto</h1>
-        <a class="btn btn-danger" th:href="@{'/pizzas'}">Tutte le nostre pizze</a>
+<body class="home-body">
+    <div class="home-container text-center">
+        <h1 class="mb-4">Benvenuto su Alessio's Pizza!</h1>
+        <a class="btn btn-danger" th:href="@{'/pizzas'}">Visualizza tutte le nostre pizze</a>
     </div>
 </body>
 </html>

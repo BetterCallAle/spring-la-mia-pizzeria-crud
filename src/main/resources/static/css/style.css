@@ -1,0 +1,18 @@
+.home-body{
+    background-image: url('../pizza.gif');
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+}
+
+.home-container{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.my-active{
+    color:red;
+}
