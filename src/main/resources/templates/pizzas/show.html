@@ -5,13 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <div th:replace="~{fragments/fragments :: resources('Home')}"></div>
+    <div th:replace="~{fragments/fragments :: resources(${pizza.name})}"></div>
 </head>
 <body>
-    <header th:insert="~{fragments/fragments :: header('home', '')}"></header>
+    <header th:insert="~{fragments/fragments :: header('', '')}"></header>
     <div class="container py-4 text-center">
-        <h1 class="mb-4">Benvenuto</h1>
-        <a class="btn btn-danger" th:href="@{'/pizzas'}">Tutte le nostre pizze</a>
+        <h1 class="text-danger mb-1" th:text="${pizza.name}"></h1>
+        <p th:text="${pizza.description}"></p>
+        <p th:text="|${pizza.price} €|"></p>
     </div>
+
 </body>
 </html>

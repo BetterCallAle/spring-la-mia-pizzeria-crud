@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <div th:replace="~{pizzas/fragments :: resources('Tutte le nostre pizze')}"></div>
+    <div th:replace="~{fragments/fragments :: resources('Tutte le nostre pizze')}"></div>
 </head>
 <body>
-    <header th:insert="~{pizzas/fragments :: header('pizzas')}"></header>
+    <header th:insert="~{fragments/fragments :: header('pizzas', ${search})}"></header>
     <div class="container py-4">
 
         <h1 class="text-center">Tutte le nostre pizze</h1>
@@ -23,6 +23,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Prezzo</th>
+                    <th scope="col">Azioni</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,11 @@
                     <th th:text="*{name}"></th>
                     <td th:text="*{description}"></td>
                     <td th:text="|*{price} €|"></td>
+                    <td>
+                        <a th:href="@{|/pizzas/*{id}|}" class="btn btn-danger">
+                            <i class="fa-solid fa-pizza-slice"></i>
+                        </a>
+                    </td>
                 </tr>
             </tbody>
         </table>
