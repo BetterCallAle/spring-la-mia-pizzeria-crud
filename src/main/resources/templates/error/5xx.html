@@ -15,7 +15,7 @@
         </div>
         <img th:src="@{pizza-error.gif}">
     </div>
-    <div th:if="${exception}">
+    <div class="text-light" th:if="${exception}">
         <p th:text="${exception}"></p>
         <p th:text="${trace}"></p>
     </div>
