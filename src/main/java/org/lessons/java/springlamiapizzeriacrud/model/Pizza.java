@@ -17,10 +17,9 @@ public class Pizza {
     private String name;
     @Size(min=10, max=255, message="La descrizione deve avere minimo 10 caratteri e massimo 255")
     private String description;
-    @Positive(message = "Il prezzo non può essere zero o inferiore a zero")
-    @NotNull(message = "Il prezzo deve essere inserito")
+    @DecimalMin(value="0.01",message = "Il prezzo non può essere zero o inferiore a zero")
     @Column(nullable = false)
-    private float price;
+    private BigDecimal price;
 
     //GETTERS
     public String getName() {
@@ -35,7 +34,7 @@ public class Pizza {
         return description;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -52,7 +51,7 @@ public class Pizza {
         this.description = description;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
