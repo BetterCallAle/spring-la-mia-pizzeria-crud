@@ -18,6 +18,7 @@ public class Pizza {
     @Size(min=10, max=255, message="La descrizione deve avere minimo 10 caratteri e massimo 255")
     private String description;
     @DecimalMin(value="0.01",message = "Il prezzo non può essere zero o inferiore a zero")
+    @NotNull(message = "Il prezzo deve essere inserito")
     @Column(nullable = false)
     private BigDecimal price;
 
