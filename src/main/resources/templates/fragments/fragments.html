@@ -35,6 +35,9 @@
                         <li class="nav-item">
                             <a th:href="@{'/pizzas/advanced-search'}" th:classAppend="${link == 'advanced-search'} ? 'my-active' : 'not-active' " class="nav-link">Ricerca avanzata</a>
                         </li>
+                        <li class="nav-item">
+                            <a th:href="@{'/pizzas/create'}" th:classAppend="${link == 'add-pizza'} ? 'my-active' : 'not-active' " class="nav-link">Aggiungi una pizza</a>
+                        </li>
                     </ul>
                 </div>
                 <!--Search-->
