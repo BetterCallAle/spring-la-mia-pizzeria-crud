@@ -75,4 +75,24 @@ public class PizzaController {
         return "redirect:/pizzas";
     }
 
+    //EDIT
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model){
+        Pizza pizza = pizzaRepo.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        model.addAttribute("pizza", pizza);
+        return "/pizzas/edit";
+    }
+
+    //UPDATE
+    @PostMapping("/edit/{id}")
+    public String update(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            return "/pizzas/edit";
+        }
+
+        pizzaRepo.save(pizza);
+
+        return "redirect:/pizzas";
+    }
+
 }
