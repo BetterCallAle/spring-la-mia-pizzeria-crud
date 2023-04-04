@@ -13,6 +13,14 @@
 
         <h1 class="text-center">Tutte le nostre pizze</h1>
 
+        <th:block th:if="${success}">
+            <div th:replace="~{fragments/messages :: success(${success})}"></div>
+        </th:block>
+
+        <th:block th:if="${danger}">
+            <div th:replace="~{fragments/messages :: danger(${danger})}"></div>
+        </th:block>
+
         <div th:if="${pizzas.size() == 0}">
             <h2>Non sono state trovate pizze</h2>
         </div>
@@ -38,6 +46,12 @@
                         <a th:href="@{|/pizzas/edit/*{id}|}" class="btn btn-danger">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
+
+                        <form class="d-inline" th:action="@{|/pizzas/delete/*{id}|}" method="POST">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             </tbody>

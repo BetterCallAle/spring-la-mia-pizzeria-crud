@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -67,10 +68,11 @@ public class PizzaController {
 
     //STORE
     @PostMapping("/create")
-    public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult){
+    public String store(@Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             return "/pizzas/create";
         }
+        redirectAttributes.addFlashAttribute("success", "La pizza " + formPizza.getName() + " è stata creata");
         pizzaRepo.save(formPizza);
         return "redirect:/pizzas";
     }
@@ -85,13 +87,22 @@ public class PizzaController {
 
     //UPDATE
     @PostMapping("/edit/{id}")
-    public String update(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, Model model){
+    public String update(@Valid @ModelAttribute Pizza pizza, BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             return "/pizzas/edit";
         }
-
+        redirectAttributes.addFlashAttribute("success", "La pizza " + pizza.getName() + " è stata aggiornata");
         pizzaRepo.save(pizza);
 
+        return "redirect:/pizzas";
+    }
+
+    //DELETE
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes){
+        Pizza pizza = pizzaRepo.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        redirectAttributes.addFlashAttribute("danger", "La pizza " + pizza.getName() + " è stata cancellata");
+        pizzaRepo.deleteById(id);
         return "redirect:/pizzas";
     }
 
